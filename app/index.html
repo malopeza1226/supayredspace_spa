@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SUPAY RED SPACE | Offensive Security Village</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="SUPAY RED SPACE — offensive security village focused on red teaming, pentesting and adversary simulation." />
+
+  <!-- Basic styles -->
+  <style>
+    :root {
+      --bg: #050509;
+      --bg-alt: #0b0c14;
+      --accent: #e53935;
+      --accent-soft: #ff7043;
+      --text-main: #f5f5f5;
+      --text-muted: #9e9e9e;
+      --card-bg: #111321;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1a1030 0, #050509 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--accent-soft);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Layout */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(to bottom, rgba(5,5,9,0.98), rgba(5,5,9,0.92));
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffeb3b 0, #e53935 40%, #000 85%);
+      box-shadow: 0 0 18px rgba(229, 57, 53, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-logo::after {
+      content: "";
+      position: absolute;
+      inset: 18%;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 0, 0, 0.7);
+    }
+
+    .brand-text-title {
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+      transition: width 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3.5rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 1.5rem;
+    }
+
+    .hero-kicker {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .hero-title span {
+      color: var(--accent-soft);
+    }
+
+    .hero-subtitle {
+      font-size: 0.97rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(17, 19, 33, 0.85);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, #ffc400 0, #ff7043 30%, #e53935 70%);
+      color: #000;
+      box-shadow: 0 10px 30px rgba(255, 112, 67, 0.45);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 40px rgba(255, 112, 67, 0.6);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border-soft);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent-soft);
+      color: var(--text-main);
+      background: rgba(17, 19, 33, 0.9);
+    }
+
+    .hero-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      max-width: 26rem;
+    }
+
+    .hero-visual {
+      background: radial-gradient(circle at 20% 0, rgba(255, 112, 67, 0.25) 0, transparent 50%),
+                  radial-gradient(circle at 80% 100%, rgba(229, 57, 53, 0.35) 0, transparent 55%),
+                  var(--bg-alt);
+      border-radius: 24px;
+      border: 1px solid var(--border-soft);
+      padding: 1rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .chip {
+      background: rgba(5, 5, 9, 0.9);
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.3rem 0.7rem;
+      font-size: 0.7rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .hero-signal {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .signal-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #00e676;
+      box-shadow: 0 0 10px rgba(0, 230, 118, 0.9);
+      margin-right: 0.4rem;
+    }
+
+    .signal-text {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .signal-pulse {
+      width: 32px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(0, 230, 118, 0.1), #00e676, rgba(0, 230, 118, 0.1));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signal-pulse::after {
+      content: "";
+      position: absolute;
+      left: -40%;
+      top: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, #b9f6ca, transparent);
+      animation: sweep 1.6s linear infinite;
+    }
+
+    @keyframes sweep {
+      0% { left: -40%; }
+      100% { left: 100%; }
+    }
+
+    /* Sections */
+    .section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--accent-soft);
+      margin-bottom: 0.35rem;
+    }
+
+    .section-heading {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.9rem;
+    }
+
+    .section-description {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 38rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: rgba(5, 5, 9, 0.9);
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      padding: 1rem;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(229, 57, 53, 0.12) 0, transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .card h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    /* Agenda */
+    .agenda-list {
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      background: rgba(5, 5, 9, 0.9);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .agenda-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2.3fr) minmax(0, 1.3fr);
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .agenda-item:nth-child(odd) {
+      background: radial-gradient(circle at 0 0, rgba(229, 57, 53, 0.07), transparent 60%);
+    }
+
+    .agenda-item:last-child {
+      border-bottom: none;
+    }
+
+    .agenda-time {
+      color: var(--accent-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+    }
+
+    .agenda-title {
+      font-weight: 600;
+    }
+
+    .agenda-meta {
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    /* Contact / CFP */
+    .form-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr);
+      gap: 1.5rem;
+    }
+
+    form {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.55rem 0.6rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      background: rgba(10, 10, 18, 0.95);
+      color: var(--text-main);
+      font-size: 0.85rem;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--accent-soft);
+      box-shadow: 0 0 0 1px rgba(255, 112, 67, 0.3);
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .status-message {
+      font-size: 0.78rem;
+      margin-top: 0.5rem;
+    }
+
+    .status-ok {
+      color: #00e676;
+    }
+
+    .status-error {
+      color: #ff5252;
+    }
+
+    .contact-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .contact-meta strong {
+      color: var(--text-main);
+    }
+
+    .contact-list {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 1rem 1.25rem 1.8rem;
+      max-width: 1080px;
+      margin: 0 auto;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      nav ul {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background: rgba(5, 5, 9, 0.98);
+        padding: 0.75rem 1.25rem 1rem;
+        flex-direction: column;
+        gap: 0.75rem;
+        border-bottom: 1px solid var(--border-soft);
+        display: none;
+      }
+
+      nav ul.open {
+        display: flex;
+      }
+
+      .agenda-item {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: auto auto;
+        grid-template-areas:
+          "time title"
+          "meta meta";
+      }
+
+      .agenda-time {
+        grid-area: time;
+      }
+
+      .agenda-title {
+        grid-area: title;
+      }
+
+      .agenda-meta {
+        grid-area: meta;
+        text-align: left;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-logo"></div>
+        <div>
+          <div class="brand-text-title">SUPAY RED SPACE</div>
+          <div class="brand-text-sub">Offensive Security Village</div>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+        ☰
+      </button>
+      <nav>
+        <ul id="nav-links">
+          <li><a href="#mission">Mission</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#agenda">Agenda</a></li>
+          <li><a href="#cfp">CFP & Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div>
+        <div class="hero-kicker">Peru · Offensive Security · Village</div>
+        <h1 class="hero-title">
+          SUPAY <span>RED SPACE</span>
+        </h1>
+        <p class="hero-subtitle">
+          A live-fire village dedicated to offensive security, red teaming and adversary simulation, built to become the national reference for hands-on hacking practice.
+        </p>
+
+        <div class="hero-tags">
+          <span class="tag">Red Team Labs</span>
+          <span class="tag">CTF & Challenges</span>
+          <span class="tag">Exploit Dev</span>
+          <span class="tag">Talks & Workshops</span>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="scrollToSection('cfp')">
+            Submit a talk
+          </button>
+          <button class="btn btn-ghost" onclick="scrollToSection('agenda')">
+            View live agenda
+          </button>
+        </div>
+
+        <p class="hero-meta">
+          Designed for pentesters, red teamers, students and researchers who want to break things, learn deeply and share real-world offensive techniques in a structured environment.
+        </p>
+      </div>
+
+      <aside class="hero-visual" aria-hidden="true">
+        <div class="hero-visual-grid">
+          <div class="chip">Red Team</div>
+          <div class="chip">Infra & Cloud</div>
+          <div class="chip">Adversary Sim</div>
+          <div class="chip">CTF</div>
+          <div class="chip">Workshops</div>
+          <div class="chip">Live Demos</div>
+        </div>
+        <div class="hero-signal">
+          <div class="signal-text">
+            <span class="signal-dot"></span>
+            <span>Signal: Village online</span>
+          </div>
+          <div class="signal-pulse"></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- MISSION -->
+    <section id="mission">
+      <div class="section-title">Mission</div>
+      <h2 class="section-heading">Why SUPAY RED SPACE exists</h2>
+      <p class="section-description">
+        SUPAY RED SPACE is an offensive security village focused on creating a serious, community-driven space for red teaming, pentesting and exploit research, with a long-term goal of becoming a national reference in Peru.
+      </p>
+
+      <div class="cards-grid">
+        <article class="card">
+          <div class="pill">Mission</div>
+          <h3>Elevate offensive security practice</h3>
+          <p>
+            The village connects practitioners, students and researchers around curated labs, simulations and talks that reflect real attack paths, not theoretical slides.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="pill">Community</div>
+          <h3>Grow a high-signal network</h3>
+          <p>
+            The space is designed to be vendor-neutral and technically demanding, encouraging collaboration, mentoring and peer review across the offensive security community.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="pill">Vision</div>
+          <h3>Become a regional reference</h3>
+          <p>
+            The long-term roadmap includes exporting the village to major conferences, partnering with local and international events and maintaining a strong technical identity.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ACTIVITIES -->
+    <section id="activities">
+      <div class="section-title">Activities</div>
+      <h2 class="section-heading">What happens in the village</h2>
+      <p class="section-description">
+        Each edition of SUPAY RED SPACE will mix talks, guided workshops and open hacking time on purpose-built infrastructure covering network, cloud, application and adversary simulation scenarios.
+      </p>
+
+      <div class="cards-grid">
+        <article class="card">
+          <div class="pill">Hands-on labs</div>
+          <h3>Offensive ranges</h3>
+          <p>
+            Curated attack paths with infrastructure tailored for red team exercises, persistence, lateral movement and post-exploitation practice.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="pill">Capture the flag</div>
+          <h3>Focused challenges</h3>
+          <p>
+            Short CTF-style tracks aligned with the village theme, from exploit development and web abuse to cloud and hybrid environments.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="pill">Talks & workshops</div>
+          <h3>Deep technical content</h3>
+          <p>
+            Sessions prioritize practical offensive techniques, tooling and case studies, with live demos whenever possible.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="pill">Community</div>
+          <h3>Mentoring & office hours</h3>
+          <p>
+            Informal spaces where experienced operators, researchers and students can discuss paths into offensive security and ongoing projects.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- AGENDA -->
+    <section id="agenda">
+      <div class="section-title">Agenda</div>
+      <h2 class="section-heading">Sample day in SUPAY RED SPACE</h2>
+      <p class="section-description">
+        The final agenda will adapt to the host conference, but the structure below illustrates how a typical day in the village could run.
+      </p>
+
+      <div class="agenda-list" id="agenda-list">
+        <!-- Filled by JavaScript from agendaData -->
+      </div>
+    </section>
+
+    <!-- CFP & CONTACT -->
+    <section id="cfp">
+      <div class="section-title">CFP & contact</div>
+      <h2 class="section-heading">Bring your content to the village</h2>
+      <p class="section-description">
+        Use the form below to propose a talk, workshop, lab or challenge. The village team will review submissions with a focus on real-world offensive techniques and practical learning value.
+      </p>
+
+      <div class="form-grid">
+        <form id="cfp-form" onsubmit="handleFormSubmit(event)">
+          <div>
+            <label for="name">Name or handle</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div>
+            <label for="email">Contact email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="type">Format</label>
+            <select id="type" name="type" required>
+              <option value="">Select one</option>
+              <option value="talk">Talk</option>
+              <option value="workshop">Workshop</option>
+              <option value="lab">Lab / Range</option>
+              <option value="ctf">CTF / Challenge</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="title">Session title</label>
+            <input type="text" id="title" name="title" required />
+          </div>
+
+          <div>
+            <label for="abstract">Short abstract</label>
+            <textarea id="abstract" name="abstract" rows="4" required></textarea>
+          </div>
+
+          <div>
+            <label for="notes">Links or additional notes</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="GitHub, demos, prior recordings, constraints…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top:0.4rem;">
+            Save submission locally
+          </button>
+          <div id="form-status" class="status-message"></div>
+          <p class="form-note">
+            Note: This demo form saves your submission in your browser only. Replace it with your conference’s official CFP or a backend endpoint before production.
+          </p>
+        </form>
+
+        <div class="contact-meta">
+          <p>
+            <strong>How to integrate the village</strong><br />
+            SUPAY RED SPACE is designed to plug into existing conferences, security meetups and academic events.
+          </p>
+
+          <div class="contact-list">
+            <p>
+              For hosting the village at your event:<br />
+              <strong>Email:</strong> <a href="mailto:contact@supayredspace.test">contact@supayredspace.test</a>
+            </p>
+            <p>
+              For sponsorship and partnerships:<br />
+              <strong>Email:</strong> <a href="mailto:sponsors@supayredspace.test">sponsors@supayredspace.test</a>
+            </p>
+            <p>
+              Follow the project and announcements:<br />
+              <strong>Social:</strong> <a href="#">@supayredspace</a> (placeholder)
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> SUPAY RED SPACE · Offensive Security Village</span>
+    <div class="footer-links">
+      <a href="#top">Back to top</a>
+      <a href="#mission">Mission</a>
+      <a href="#activities">Activities</a>
+      <a href="#cfp">CFP</a>
+    </div>
+  </footer>
+
+  <!-- JS: navigation, smooth scroll, agenda, local storage -->
+  <script>
+    // Responsive nav toggle
+    function toggleNav() {
+      const nav = document.getElementById("nav-links");
+      nav.classList.toggle("open");
+    }
+
+    // Smooth scroll
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    // Sample agenda data (customize per event)
+    const agendaData = [
+      {
+        time: "10:00 - 10:30",
+        title: "Village opening: rules of engagement & infra overview",
+        meta: "Intro · Village staff"
+      },
+      {
+        time: "10:30 - 12:00",
+        title: "Hands-on lab: initial access & foothold in hybrid environments",
+        meta: "Workshop · Intermediate"
+      },
+      {
+        time: "12:00 - 13:00",
+        title: "Open hacking: red team range & CTF warm-up",
+        meta: "Lab · All levels"
+      },
+      {
+        time: "14:00 - 15:00",
+        title: "Talk: real-world adversary simulation lessons learned",
+        meta: "Talk · Advanced"
+      },
+      {
+        time: "15:15 - 16:30",
+        title: "Workshop: building stealthy implants & opsec",
+        meta: "Workshop · Advanced"
+      },
+      {
+        time: "16:30 - 18:00",
+        title: "CTF sprint: attack paths & flags across the village infra",
+        meta: "CTF · All levels"
+      }
+    ];
+
+    function renderAgenda() {
+      const container = document.getElementById("agenda-list");
+      container.innerHTML = "";
+
+      agendaData.forEach(item => {
+        const row = document.createElement("div");
+        row.className = "agenda-item";
+        row.innerHTML = `
+          <div class="agenda-time">${item.time}</div>
+          <div class="agenda-title">${item.title}</div>
+          <div class="agenda-meta">${item.meta}</div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    // CFP form with localStorage
+    function handleFormSubmit(event) {
+      event.preventDefault();
+
+      const form = document.getElementById("cfp-form");
+      const statusEl = document.getElementById("form-status");
+
+      const payload = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        type: form.type.value,
+        title: form.title.value.trim(),
+        abstract: form.abstract.value.trim(),
+        notes: form.notes.value.trim(),
+        date: new Date().toISOString()
+      };
+
+      if (!payload.name || !payload.email || !payload.type || !payload.title || !payload.abstract) {
+        statusEl.textContent = "Please complete all required fields.";
+        statusEl.className = "status-message status-error";
+        return;
+      }
+
+      try {
+        const existing = JSON.parse(localStorage.getItem("supay_cfp") || "[]");
+        existing.push(payload);
+        localStorage.setItem("supay_cfp", JSON.stringify(existing));
+        statusEl.textContent = "Submission saved locally. Replace this demo logic with your real CFP process.";
+        statusEl.className = "status-message status-ok";
+        form.reset();
+      } catch (err) {
+        statusEl.textContent = "Unable to save submission locally. Please take a screenshot or copy your text.";
+        statusEl.className = "status-message status-error";
+      }
+    }
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Initial render
+    renderAgenda();
+  </script>
+</body>
+</html>
