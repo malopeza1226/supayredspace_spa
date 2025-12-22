@@ -10,7 +10,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "SUPAY RED SPACE - Offensive Security Village",
   description:
-    "An offensive security village featuring talks, workshops, CTF competitions and conferences. Inspired by the traditional Diablada dance and Supay mythology.",
+    "An offensive security village featuring talks, workshops, CTF competitions, and conferences. Inspired by the Diablada and Supay mythology.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`font-sans antialiased`}>
         {children}
         <Analytics />

@@ -1,19 +1,17 @@
-import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { Features } from "@/components/features"
-import { Events } from "@/components/events"
 import { About } from "@/components/about"
-import { Footer } from "@/components/footer"
+import { Events } from "@/components/events"
+import { Activities } from "@/components/activities"
+import { Navigation } from "@/components/navigation"
 
 export default function Page() {
   return (
     <main className="min-h-screen">
-      <Header />
+      <Navigation />
       <Hero />
-      <Features />
-      <Events />
       <About />
-      <Footer />
+      <Activities />
+      <Events />
     </main>
   )
 }
