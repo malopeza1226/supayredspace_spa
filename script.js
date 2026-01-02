@@ -28,6 +28,40 @@ mobileMenuItems.forEach((item) => {
   })
 })
 
+let currentLang = "en" // Default language
+
+function updateLanguage(lang) {
+  currentLang = lang
+  const elements = document.querySelectorAll("[data-en][data-es]")
+
+  elements.forEach((element) => {
+    const text = lang === "en" ? element.getAttribute("data-en") : element.getAttribute("data-es")
+    if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+      element.placeholder = text
+    } else {
+      element.textContent = text
+    }
+  })
+
+  document.getElementById("langText").textContent = lang === "en" ? "ES" : "EN"
+
+  // Save language preference
+  localStorage.setItem("preferredLanguage", lang)
+}
+
+document.getElementById("langToggle").addEventListener("click", () => {
+  const newLang = currentLang === "en" ? "es" : "en"
+  updateLanguage(newLang)
+})
+
+// Load saved language preference on page load
+window.addEventListener("DOMContentLoaded", () => {
+  const savedLang = localStorage.getItem("preferredLanguage")
+  if (savedLang && savedLang === "es") {
+    updateLanguage("es")
+  }
+})
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {

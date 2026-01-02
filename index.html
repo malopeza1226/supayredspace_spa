@@ -18,11 +18,20 @@
 
                 <!-- Desktop Navigation -->
                 <div class="nav-desktop">
-                    <a href="#home">HOME</a>
-                    <a href="#about">ABOUT</a>
-                    <a href="#activities">ACTIVITIES</a>
-                    <a href="#events">EVENTS</a>
-                    <a href="#contact">CONTACT</a>
+                    <a href="#home" data-en="HOME" data-es="INICIO">HOME</a>
+                    <a href="#about" data-en="ABOUT" data-es="ACERCA DE">ABOUT</a>
+                    <a href="#activities" data-en="ACTIVITIES" data-es="ACTIVIDADES">ACTIVITIES</a>
+                    <a href="#events" data-en="EVENTS" data-es="EVENTOS">EVENTS</a>
+                    <a href="#contact" data-en="CONTACT" data-es="CONTACTO">CONTACT</a>
+                    <!-- Keep only one language toggle button in navigation -->
+                    <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                        <span id="langText">ES</span>
+                    </button>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -42,11 +51,12 @@
 
         <!-- Mobile Navigation -->
         <div class="nav-mobile hidden" id="mobileMenu">
-            <a href="#home" class="nav-mobile-item">HOME</a>
-            <a href="#about" class="nav-mobile-item">ABOUT</a>
-            <a href="#activities" class="nav-mobile-item">ACTIVITIES</a>
-            <a href="#events" class="nav-mobile-item">EVENTS</a>
-            <a href="#contact" class="nav-mobile-item">CONTACT</a>
+            <a href="#home" class="nav-mobile-item" data-en="HOME" data-es="INICIO">HOME</a>
+            <a href="#about" class="nav-mobile-item" data-en="ABOUT" data-es="ACERCA DE">ABOUT</a>
+            <a href="#activities" class="nav-mobile-item" data-en="ACTIVITIES" data-es="ACTIVIDADES">ACTIVITIES</a>
+            <a href="#events" class="nav-mobile-item" data-en="EVENTS" data-es="EVENTOS">EVENTS</a>
+            <a href="#contact" class="nav-mobile-item" data-en="CONTACT" data-es="CONTACTO">CONTACT</a>
+            <!-- Removed duplicate mobile language toggle button -->
         </div>
     </nav>
 
@@ -57,29 +67,30 @@
             <div class="container hero-content">
                 <div class="hero-grid">
                     <div class="hero-text">
-                        <p class="hero-subtitle">Offensive Security Village</p>
+                        <!-- Added Spanish translations -->
+                        <p class="hero-subtitle" data-en="Offensive Security Village" data-es="Villa de Seguridad Ofensiva">Offensive Security Village</p>
                         <h1 class="hero-title">SUPAY RED SPACE</h1>
-                        <p class="hero-description">
+                        <p class="hero-description" data-en="A global community of offensive security practitioners, researchers, and enthusiasts. Inspired by the power of Supay and the tradition of Diablada." data-es="Una comunidad global de profesionales, investigadores y entusiastas de la seguridad ofensiva. Inspirados por el poder de Supay y la tradición de la Diablada.">
                             A global community of offensive security practitioners, researchers, and enthusiasts. Inspired by the power of Supay and the tradition of Diablada.
                         </p>
 
                         <div class="hero-buttons">
-                            <a href="#contact" class="btn btn-primary">JOIN THE VILLAGE</a>
-                            <a href="#events" class="btn btn-outline">UPCOMING EVENTS</a>
+                            <a href="#contact" class="btn btn-primary" data-en="JOIN THE VILLAGE" data-es="ÚNETE A LA VILLA">JOIN THE VILLAGE</a>
+                            <a href="#events" class="btn btn-outline" data-en="UPCOMING EVENTS" data-es="PRÓXIMOS EVENTOS">UPCOMING EVENTS</a>
                         </div>
 
                         <div class="hero-features">
                             <div class="hero-feature-item">
                                 <div class="hero-feature-dot"></div>
-                                <span>Talks & Workshops</span>
+                                <span data-en="Talks & Workshops" data-es="Charlas y Talleres">Talks & Workshops</span>
                             </div>
                             <div class="hero-feature-item">
                                 <div class="hero-feature-dot"></div>
-                                <span>CTF Competitions</span>
+                                <span data-en="CTF Competitions" data-es="Competencias CTF">CTF Competitions</span>
                             </div>
                             <div class="hero-feature-item">
                                 <div class="hero-feature-dot"></div>
-                                <span>Conferences</span>
+                                <span data-en="Conferences" data-es="Conferencias">Conferences</span>
                             </div>
                         </div>
                     </div>
@@ -87,7 +98,7 @@
                     <div class="hero-image">
                         <div class="hero-image-container">
                             <div class="hero-image-glow"></div>
-                            <img src="public/diablada-devil-mask-in-red-and-black-traditional.jpg" alt="SUPAY Devil Mask">
+                            <img src="diablada-devil-mask-in-red-and-black--traditional-.jpg" alt="SUPAY Devil Mask">
                         </div>
                     </div>
                 </div>
@@ -104,28 +115,29 @@
         <section id="about" class="about">
             <div class="container">
                 <div class="about-content">
-                    <h2 class="section-title">About SUPAY RED SPACE</h2>
+                    <!-- Added Spanish translations -->
+                    <h2 class="section-title" data-en="About SUPAY RED SPACE" data-es="Acerca de SUPAY RED SPACE">About SUPAY RED SPACE</h2>
 
                     <div class="about-card">
                         <div class="about-card-content">
-                            <p class="about-text">
+                            <p class="about-text" data-en="SUPAY RED SPACE is a community initiative that focuses on offensive security, red teaming, penetration testing, exploit development, and adversary simulation. We bring together security researchers, ethical hackers, and cybersecurity professionals to share knowledge and advance the field." data-es="SUPAY RED SPACE es una iniciativa comunitaria enfocada en seguridad ofensiva, red teaming, pruebas de penetración, desarrollo de exploits y simulación de adversarios. Reunimos investigadores de seguridad, hackers éticos y profesionales de ciberseguridad para compartir conocimientos y avanzar en el campo.">
                                 SUPAY RED SPACE is a community initiative that focuses on offensive security, red teaming, penetration testing, exploit development, and adversary simulation. We bring together security researchers, ethical hackers, and cybersecurity professionals to share knowledge and advance the field.
                             </p>
 
-                            <p class="about-text">
+                            <p class="about-text" data-en="Our name draws inspiration from the Diablada, a traditional Andean dance featuring powerful devil masks, and Supay, the mythological deity of the underworld. Like the Diablada dancers who channel ancient power through their art, we channel expertise and innovation through offensive security." data-es="Nuestro nombre se inspira en la Diablada, una danza tradicional andina que presenta máscaras de diablo poderosas, y Supay, la deidad mitológica del inframundo. Como los danzantes de la Diablada que canalizan poder ancestral a través de su arte, nosotros canalizamos experiencia e innovación a través de la seguridad ofensiva.">
                                 Our name draws inspiration from the Diablada, a traditional Andean dance featuring powerful devil masks, and Supay, the mythological deity of the underworld. Like the Diablada dancers who channel ancient power through their art, we channel expertise and innovation through offensive security.
                             </p>
 
                             <div class="about-grid">
                                 <div class="about-item">
-                                    <h3 class="about-item-title">Our Mission</h3>
-                                    <p class="about-item-text">
+                                    <h3 class="about-item-title" data-en="Our Mission" data-es="Nuestra Misión">Our Mission</h3>
+                                    <p class="about-item-text" data-en="To create a space where offensive security practitioners can learn, collaborate, and push the boundaries of cybersecurity research." data-es="Crear un espacio donde los profesionales de seguridad ofensiva puedan aprender, colaborar y superar los límites de la investigación en ciberseguridad.">
                                         To create a space where offensive security practitioners can learn, collaborate, and push the boundaries of cybersecurity research.
                                     </p>
                                 </div>
                                 <div class="about-item">
-                                    <h3 class="about-item-title">Our Values</h3>
-                                    <p class="about-item-text">
+                                    <h3 class="about-item-title" data-en="Our Values" data-es="Nuestros Valores">Our Values</h3>
+                                    <p class="about-item-text" data-en="Knowledge sharing, ethical practice, innovation, and community empowerment in the field of offensive security." data-es="Compartir conocimientos, práctica ética, innovación y empoderamiento comunitario en el campo de la seguridad ofensiva.">
                                         Knowledge sharing, ethical practice, innovation, and community empowerment in the field of offensive security.
                                     </p>
                                 </div>
@@ -140,8 +152,9 @@
         <section id="activities" class="activities">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">What We Offer</h2>
-                    <p class="section-description">
+                    <!-- Added Spanish translations -->
+                    <h2 class="section-title" data-en="What We Offer" data-es="Lo Que Ofrecemos">What We Offer</h2>
+                    <p class="section-description" data-en="Comprehensive offensive security activities designed to enhance your skills and expand your network." data-es="Actividades integrales de seguridad ofensiva diseñadas para mejorar tus habilidades y expandir tu red.">
                         Comprehensive offensive security activities designed to enhance your skills and expand your network.
                     </p>
                 </div>
@@ -151,11 +164,11 @@
                         <div class="activity-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1-3-3h7z"></path>
                             </svg>
                         </div>
-                        <h3 class="activity-title">Talks & Presentations</h3>
-                        <p class="activity-description">
+                        <h3 class="activity-title" data-en="Talks & Presentations" data-es="Charlas y Presentaciones">Talks & Presentations</h3>
+                        <p class="activity-description" data-en="Expert speakers share cutting-edge research, techniques, and insights from the offensive security trenches." data-es="Expertos comparten investigación de vanguardia, técnicas y conocimientos desde las trincheras de la seguridad ofensiva.">
                             Expert speakers share cutting-edge research, techniques, and insights from the offensive security trenches.
                         </p>
                     </div>
@@ -169,8 +182,8 @@
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                             </svg>
                         </div>
-                        <h3 class="activity-title">Workshops</h3>
-                        <p class="activity-description">
+                        <h3 class="activity-title" data-en="Workshops" data-es="Talleres">Workshops</h3>
+                        <p class="activity-description" data-en="Hands-on training sessions covering exploit development, red teaming tactics, and advanced penetration testing." data-es="Sesiones de entrenamiento práctico cubriendo desarrollo de exploits, tácticas de red teaming y pruebas de penetración avanzadas.">
                             Hands-on training sessions covering exploit development, red teaming tactics, and advanced penetration testing.
                         </p>
                     </div>
@@ -186,8 +199,8 @@
                                 <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
                             </svg>
                         </div>
-                        <h3 class="activity-title">CTF Competitions</h3>
-                        <p class="activity-description">
+                        <h3 class="activity-title" data-en="CTF Competitions" data-es="Competencias CTF">CTF Competitions</h3>
+                        <p class="activity-description" data-en="Challenge your skills in capture-the-flag competitions designed to test offensive security capabilities." data-es="Desafía tus habilidades en competencias de captura la bandera diseñadas para probar capacidades de seguridad ofensiva.">
                             Challenge your skills in capture-the-flag competitions designed to test offensive security capabilities.
                         </p>
                     </div>
@@ -200,8 +213,8 @@
                                 <circle cx="12" cy="12" r="2"></circle>
                             </svg>
                         </div>
-                        <h3 class="activity-title">Conferences</h3>
-                        <p class="activity-description">
+                        <h3 class="activity-title" data-en="Conferences" data-es="Conferencias">Conferences</h3>
+                        <p class="activity-description" data-en="Multi-day events bringing together the global offensive security community for networking and learning." data-es="Eventos de varios días que reúnen a la comunidad global de seguridad ofensiva para networking y aprendizaje.">
                             Multi-day events bringing together the global offensive security community for networking and learning.
                         </p>
                     </div>
@@ -213,8 +226,9 @@
         <section id="events" class="events">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Events in 2025</h2>
-                    <p class="section-description">
+                    <!-- Added Spanish translations -->
+                    <h2 class="section-title" data-en="Events in 2025" data-es="Eventos en 2025">Events in 2025</h2>
+                    <p class="section-description" data-en="We are excited for 2025! Join us at the following conferences and look forward to seeing you there!" data-es="¡Estamos emocionados por 2025! Únete a nosotros en las siguientes conferencias y esperamos verte allí!">
                         We are excited for 2025! Join us at the following conferences and look forward to seeing you there!
                     </p>
                 </div>
@@ -222,7 +236,7 @@
                 <div class="events-grid">
                     <div class="event-card">
                         <div class="event-image">
-                            <img src="public/cybersecurity-conference-las-vegas-def-con-atmosph.jpg" alt="DEF CON 33">
+                            <img src="cybersecurity-conference-las-vegas-def-con-atmosph.jpg" alt="DEF CON 33">
                         </div>
                         <div class="event-content">
                             <h3 class="event-title">DEF CON 33</h3>
@@ -241,19 +255,19 @@
                                         <line x1="8" y1="2" x2="8" y2="6"></line>
                                         <line x1="3" y1="10" x2="21" y2="10"></line>
                                     </svg>
-                                    <span>August 7-10, 2025</span>
+                                    <span data-en="August 7-10, 2025" data-es="7-10 de Agosto, 2025">August 7-10, 2025</span>
                                 </div>
                             </div>
-                            <p class="event-description">
+                            <p class="event-description" data-en="Join us at DEF CON for hands-on workshops, CTF challenges, and networking with the global hacking community." data-es="Únete a nosotros en DEF CON para talleres prácticos, desafíos CTF y networking con la comunidad global de hacking.">
                                 Join us at DEF CON for hands-on workshops, CTF challenges, and networking with the global hacking community.
                             </p>
-                            <button class="btn btn-outline-full">Learn More</button>
+                            <button class="btn btn-outline-full" data-en="Learn More" data-es="Más Información">Learn More</button>
                         </div>
                     </div>
 
                     <div class="event-card">
                         <div class="event-image">
-                            <img src="public/black-hat-cybersecurity-conference-professional-se.jpg" alt="Black Hat USA 2025">
+                            <img src="black-hat-cybersecurity-conference-professional-se.jpg" alt="Black Hat USA 2025">
                         </div>
                         <div class="event-content">
                             <h3 class="event-title">Black Hat USA 2025</h3>
@@ -272,29 +286,29 @@
                                         <line x1="8" y1="2" x2="8" y2="6"></line>
                                         <line x1="3" y1="10" x2="21" y2="10"></line>
                                     </svg>
-                                    <span>August 2-7, 2025</span>
+                                    <span data-en="August 2-7, 2025" data-es="2-7 de Agosto, 2025">August 2-7, 2025</span>
                                 </div>
                             </div>
-                            <p class="event-description">
+                            <p class="event-description" data-en="Advanced training sessions and briefings on the latest offensive security techniques and vulnerabilities." data-es="Sesiones de entrenamiento avanzado y conferencias sobre las últimas técnicas de seguridad ofensiva y vulnerabilidades.">
                                 Advanced training sessions and briefings on the latest offensive security techniques and vulnerabilities.
                             </p>
-                            <button class="btn btn-outline-full">Learn More</button>
+                            <button class="btn btn-outline-full" data-en="Learn More" data-es="Más Información">Learn More</button>
                         </div>
                     </div>
 
                     <div class="event-card">
                         <div class="event-image">
-                            <img src="public/cybersecurity-bsides-conference-community-event.jpg" alt="BSides Conference">
+                            <img src="cybersecurity-bsides-conference-community-event.jpg" alt="BSides Conference">
                         </div>
                         <div class="event-content">
-                            <h3 class="event-title">BSides Conference</h3>
+                            <h3 class="event-title" data-en="BSides Conference" data-es="Conferencia BSides">BSides Conference</h3>
                             <div class="event-details">
                                 <div class="event-detail">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                         <circle cx="12" cy="10" r="3"></circle>
                                     </svg>
-                                    <span>Various Locations</span>
+                                    <span data-en="Various Locations" data-es="Varias Ubicaciones">Various Locations</span>
                                 </div>
                                 <div class="event-detail">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -303,13 +317,13 @@
                                         <line x1="8" y1="2" x2="8" y2="6"></line>
                                         <line x1="3" y1="10" x2="21" y2="10"></line>
                                     </svg>
-                                    <span>Multiple dates in 2025</span>
+                                    <span data-en="Multiple dates in 2025" data-es="Múltiples fechas en 2025">Multiple dates in 2025</span>
                                 </div>
                             </div>
-                            <p class="event-description">
+                            <p class="event-description" data-en="Community-driven security conferences around the world featuring talks, workshops, and local networking." data-es="Conferencias de seguridad impulsadas por la comunidad alrededor del mundo con charlas, talleres y networking local.">
                                 Community-driven security conferences around the world featuring talks, workshops, and local networking.
                             </p>
-                            <button class="btn btn-outline-full">Learn More</button>
+                            <button class="btn btn-outline-full" data-en="Learn More" data-es="Más Información">Learn More</button>
                         </div>
                     </div>
                 </div>
@@ -317,14 +331,15 @@
                 <!-- Contact Card -->
                 <div class="contact-card" id="contact">
                     <div class="contact-header">
-                        <h3 class="contact-title">Join SUPAY RED SPACE</h3>
-                        <p class="contact-description">
+                        <!-- Added Spanish translations -->
+                        <h3 class="contact-title" data-en="Join SUPAY RED SPACE" data-es="Únete a SUPAY RED SPACE">Join SUPAY RED SPACE</h3>
+                        <p class="contact-description" data-en="Be part of our community and stay updated on upcoming events, workshops, and CTF competitions." data-es="Sé parte de nuestra comunidad y mantente actualizado sobre próximos eventos, talleres y competencias CTF.">
                             Be part of our community and stay updated on upcoming events, workshops, and CTF competitions.
                         </p>
                     </div>
                     <div class="contact-buttons">
-                        <button class="btn btn-primary">Join Our Discord</button>
-                        <button class="btn btn-outline">Subscribe to Newsletter</button>
+                        <button class="btn btn-primary" data-en="Join Our Discord" data-es="Únete a Nuestro Discord">Join Our Discord</button>
+                        <button class="btn btn-outline" data-en="Subscribe to Newsletter" data-es="Suscríbete al Boletín">Subscribe to Newsletter</button>
                     </div>
                 </div>
             </div>
