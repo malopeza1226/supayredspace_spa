@@ -28,7 +28,7 @@ mobileMenuItems.forEach((item) => {
   })
 })
 
-let currentLang = "en" // Default language
+let currentLang = "es" // Default language
 
 function updateLanguage(lang) {
   currentLang = lang
@@ -57,8 +57,10 @@ document.getElementById("langToggle").addEventListener("click", () => {
 // Load saved language preference on page load
 window.addEventListener("DOMContentLoaded", () => {
   const savedLang = localStorage.getItem("preferredLanguage")
-  if (savedLang && savedLang === "es") {
-    updateLanguage("es")
+  if (savedLang) {
+    updateLanguage(savedLang)
+  } else {
+    updateLanguage("es") // Set Spanish on first load
   }
 })
 
