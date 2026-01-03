@@ -44,6 +44,7 @@ function updateLanguage(lang) {
   })
 
   document.getElementById("langText").textContent = lang === "en" ? "ES" : "EN"
+  document.getElementById("langTextMobile").textContent = lang === "en" ? "ES" : "EN"
 
   // Save language preference
   localStorage.setItem("preferredLanguage", lang)
@@ -54,14 +55,9 @@ document.getElementById("langToggle").addEventListener("click", () => {
   updateLanguage(newLang)
 })
 
-// Load saved language preference on page load
-window.addEventListener("DOMContentLoaded", () => {
-  const savedLang = localStorage.getItem("preferredLanguage")
-  if (savedLang) {
-    updateLanguage(savedLang)
-  } else {
-    updateLanguage("es") // Set Spanish on first load
-  }
+document.getElementById("langToggleMobile").addEventListener("click", () => {
+  const newLang = currentLang === "en" ? "es" : "en"
+  updateLanguage(newLang)
 })
 
 // Smooth scrolling for anchor links
@@ -78,3 +74,14 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     }
   })
 })
+
+// Load saved language preference on page load
+window.addEventListener("DOMContentLoaded", () => {
+  const savedLang = localStorage.getItem("preferredLanguage")
+  if (savedLang) {
+    updateLanguage(savedLang)
+  } else {
+    updateLanguage("es") // Set Spanish on first load
+  }
+})
+
